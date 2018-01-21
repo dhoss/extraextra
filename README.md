@@ -4,6 +4,9 @@
 Card](https://goreportcard.com/badge/github.com/dhoss/mendicant-bias)](https://goreportcard.com/report/github.com/dhoss/mendicant-bias)
 [![Build
 Status](https://travis-ci.org/dhoss/mendicant-bias.svg?branch=master)](https://travis-ci.org/dhoss/mendicant-bias)
+[![Coverage
+Status](https://coveralls.io/repos/github/dhoss/mendicant-bias/badge.svg?branch=master)](https://coveralls.io/github/dhoss/mendicant-bias?branch=master)
+
 
 > *“And so here at the end of my life, I do once again betray a former
 > master. The path ahead is fraught with peril. But I will do all I can to
