@@ -1,5 +1,8 @@
 # 05-032 Mendicant Bias
 
+[![Go Report
+Card](https://goreportcard.com/badge/github.com/dhoss/mendicant-bias)](https://goreportcard.com/report/github.com/dhoss/mendicant-bias)
+
 > *“And so here at the end of my life, I do once again betray a former
 > master. The path ahead is fraught with peril. But I will do all I can to
 > keep it stable - keep you safe. I'm not so foolish to think this will
