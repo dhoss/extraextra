@@ -4,6 +4,7 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -33,8 +34,17 @@ func (suite *MonitorTestSuite) TestFeedList() {
 	expectedFeedItem = append(expectedFeedItem, "last_name")
 	expectedFeedList = append(expectedFeedList, expectedFeedItem)
 
-	var feedListActual = suite.Feed.FeedList(strings.NewReader(expectedCsvLine))
-	suite.Equal(expectedFeedList, feedListActual)
+	feedListActual, err := suite.Feed.FeedList(strings.NewReader(expectedCsvLine))
+	assert.Equal(suite.T(), expectedFeedList, feedListActual)
+	assert.Nil(suite.T(), err)
+}
+
+func (suite *MonitorTestSuite) TestFeedListFails() {
+	var badCsv = `bad,more,badstuff
+	badrow`
+
+	_, err := suite.Feed.FeedList(strings.NewReader(badCsv))
+	assert.EqualError(suite.T(), err, "line 2, column 0: wrong number of fields in line")
 }
 
 // In order for 'go test' to run this suite, we need to create

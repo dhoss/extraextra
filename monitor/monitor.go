@@ -16,7 +16,7 @@ type Feed struct {
 }
 
 // FeedList returns a list of feed URLs from a file
-func (f Feed) FeedList(feedListReader io.Reader) [][]string {
+func (f Feed) FeedList(feedListReader io.Reader) ([][]string, error) {
 	var feeds [][]string
 	csvReader := csv.NewReader(feedListReader)
 	for {
@@ -25,11 +25,12 @@ func (f Feed) FeedList(feedListReader io.Reader) [][]string {
 			break
 		}
 		if err != nil {
-			log.Fatal("Error parsing CSV", err)
+			log.Println(err)
+			return nil, err
 		}
 
 		feeds = append(feeds, feed)
 	}
 
-	return feeds
+	return feeds, nil
 }
