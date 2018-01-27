@@ -1,12 +1,13 @@
 language: go
-
 go:
-  - 1.x
-  - 1.6
-  - 1.7.x
-  - master
-
+- 1.x
+- 1.6
+- 1.7.x
+- master
 before_install:
-    - go get github.com/mattn/goveralls
+- go get github.com/mattn/goveralls
 script:
-    - $GOPATH/bin/goveralls -service=travis-ci
+- "$GOPATH/bin/goveralls -service=travis-ci"
+env:
+  global:
+    secure: bRWovSi7yHtPLbRHO+5H1Cp3QTcj9kogXhdCpTQpBEbRuVa2i5YjX2nlQhr9MRokc7FewC9Zofgnuw/CW4bfO+59iUU2Q3/2L8lSrMtaVf9tkv/TKXOyLxpVUBFbeD698YNH4O4GojMGNjsx9Wk16JbwZwdmE0+KNCc/0XgNU6OBonput8ByFk2HHaWLZQvXJjys6wFcsWDKdlGHTXpNFoxjRl/ipoim4hEAe0ES4gvhDACGzVIc6aarbsGcL2Sv1+Kl8jMF4kAbUnYH416uCkEuWSXJKbIwr39PjRHT786AXY+e8fJLIbpQOP1fn0h0YepwxBwYUE9aU/52ZqrQN3cnNSchwM0y/DSd4Qu5V6VexWqf/5WJW/qja3H5OdCpjnIkrMBoDaf6MZV8SgsuIkALVt+s70cWXCalPkc4wziKxd5WXl3Oqp0rV6Dva5X8AmRlnp6OJmplwu1Q8wjHalc73yjX+VFfASpmEvDs2EUEPqTPJh11HrnJWkd69pQMLffXuHCMIe7kQ6uozCPvhPytbV03oFh6KwDaCqSAFX2fIZr0aSpz6WvTljDfUHPtqC9FzG5cvZJrofNcEnUbnRVvjjsrgPLd0QPBw1+VSv9LM9hECWVXuy8r+jbd1retpBT8kQx84ml7X+J6DKkTu02FA2SmgbPpob9aM6wtKC8=

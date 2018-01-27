@@ -1,42 +1,31 @@
 package monitor
 
 import (
-	"bufio"
 	"encoding/csv"
 	"io"
 	"log"
-	"os"
 )
 
 // Monitor is an interface for a Monitor
 type Monitor interface {
-	FeedList() [][]string
+	FeedList(io.Reader) [][]string
 }
 
 // Feed is a struct for feed information
 type Feed struct {
-	config string
 }
 
 // FeedList returns a list of feed URLs from a file
-func (f Feed) FeedList() [][]string {
+func (f Feed) FeedList(feedListReader io.Reader) [][]string {
 	var feeds [][]string
-	filePath := f.config
-	file, err := os.Open(filePath)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	reader := bufio.NewReader(file)
-	csvReader := csv.NewReader(reader)
+	csvReader := csv.NewReader(feedListReader)
 	for {
 		feed, err := csvReader.Read()
 		if err == io.EOF {
 			break
 		}
 		if err != nil {
-			log.Fatal(err)
+			log.Fatal("Error parsing CSV", err)
 		}
 
 		feeds = append(feeds, feed)
