@@ -1,11 +1,11 @@
 # 05-032 Mendicant Bias
 
 [![Go Report
-Card](https://goreportcard.com/badge/github.com/dhoss/mendicant-bias)](https://goreportcard.com/report/github.com/dhoss/mendicant-bias)
+Card](https://goreportcard.com/badge/github.com/dhoss/mendicantbias)](https://goreportcard.com/report/github.com/dhoss/mendicantbias)
 [![Build
-Status](https://travis-ci.org/dhoss/mendicant-bias.svg?branch=master)](https://travis-ci.org/dhoss/mendicant-bias)
+Status](https://travis-ci.org/dhoss/mendicantbias.svg?branch=master)](https://travis-ci.org/dhoss/mendicantbias)
 [![Coverage
-Status](https://coveralls.io/repos/github/dhoss/mendicant-bias/badge.svg?branch=master)](https://coveralls.io/github/dhoss/mendicant-bias?branch=master)
+Status](https://coveralls.io/repos/github/dhoss/mendicantbias/badge.svg?branch=master)](https://coveralls.io/github/dhoss/mendicantbias?branch=master)
 
 
 > *“And so here at the end of my life, I do once again betray a former
