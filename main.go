@@ -25,6 +25,8 @@ type FeedConfig struct {
 
 var config Config = FeedConfig{}
 
+var feed Feed
+
 func main() {
 	// Would be great to just pass config and have Feed do the right thing
 	configFile := os.Args[1]
@@ -34,7 +36,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	feed := monitor.Feed{FeedURLReader: feedReader}
+	feed = monitor.Feed{FeedURLReader: feedReader}
 
 	feeds, err := feed.FeedList()
 	if err != nil {
