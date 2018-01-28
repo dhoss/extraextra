@@ -8,17 +8,18 @@ import (
 
 // Monitor is an interface for a Monitor
 type Monitor interface {
-	FeedList(io.Reader) [][]string
+	FeedList() [][]string
 }
 
 // Feed is a struct for feed information
 type Feed struct {
+	FeedURLReader io.Reader
 }
 
 // FeedList returns a list of feed URLs from a file
-func (f Feed) FeedList(feedListReader io.Reader) ([][]string, error) {
+func (f Feed) FeedList() ([][]string, error) {
 	var feeds [][]string
-	csvReader := csv.NewReader(feedListReader)
+	csvReader := csv.NewReader(f.FeedURLReader)
 	for {
 		feed, err := csvReader.Read()
 		if err == io.EOF {

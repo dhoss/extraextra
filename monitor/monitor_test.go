@@ -13,19 +13,20 @@ import (
 // returns the current testing context
 type MonitorTestSuite struct {
 	suite.Suite
-	Feed Feed
 }
+
+/*
+type stubConfig struct {
+	Config Config
+}
+
+
+func (config stubConfig) ReadFile(configFile string) (io.Reader, error) {
+	return strings.NewReader(expectedCsvLine), nil
+}
+*/
 
 var expectedCsvLine = `first_name,last_name`
-
-/*"Rob","Pike",rob
-Ken,Thompson,ken
-"Robert","Griesemer","gri"`*/
-
-func (suite *MonitorTestSuite) SetUpTests() {
-
-	suite.Feed = Feed{}
-}
 
 func (suite *MonitorTestSuite) TestFeedList() {
 	var expectedFeedList [][]string
@@ -34,7 +35,9 @@ func (suite *MonitorTestSuite) TestFeedList() {
 	expectedFeedItem = append(expectedFeedItem, "last_name")
 	expectedFeedList = append(expectedFeedList, expectedFeedItem)
 
-	feedListActual, err := suite.Feed.FeedList(strings.NewReader(expectedCsvLine))
+	feed := Feed{FeedURLReader: strings.NewReader(expectedCsvLine)}
+
+	feedListActual, err := feed.FeedList()
 	assert.Equal(suite.T(), expectedFeedList, feedListActual)
 	assert.Nil(suite.T(), err)
 }
@@ -43,8 +46,9 @@ func (suite *MonitorTestSuite) TestFeedListFails() {
 	var badCsv = `bad,more,badstuff
 	badrow`
 
-	_, err := suite.Feed.FeedList(strings.NewReader(badCsv))
-	assert.EqualError(suite.T(), err, "line 2, column 0: wrong number of fields in line")
+	feed := Feed{FeedURLReader: strings.NewReader(badCsv)}
+	_, err := feed.FeedList()
+	assert.Error(suite.T(), err)
 }
 
 // In order for 'go test' to run this suite, we need to create
