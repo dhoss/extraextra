@@ -10,7 +10,6 @@ import (
 	"github.com/dhoss/mendicantbias/monitor"
 )
 
-var feed monitor.Feed
 var feeds [][]string
 
 // Config is an interface to provide configuration
